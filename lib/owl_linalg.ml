@@ -65,17 +65,6 @@ let lu_solve = None
 (** [ QR decomposition ]  *)
 
 
-let _get_q
-  : type a b. (a, b) kind -> (a, b) t -> (a, b) t -> (a, b) t
-  = fun k a tau ->
-  match k with
-  | Float32   -> Owl_lapacke.orgqr a tau
-  | Float64   -> Owl_lapacke.orgqr a tau
-  | Complex32 -> Owl_lapacke.ungqr a tau
-  | Complex64 -> Owl_lapacke.ungqr a tau
-  | _         -> failwith "owl_linalg:_get_q"
-
-
 let qr_sqsolve a b =
   let open Gsl.Vectmat in
   let c = MD.clone a in
