@@ -76,18 +76,6 @@ let _get_q
   | _         -> failwith "owl_linalg:_get_q"
 
 
-let qr x =
-  let x = M.clone x in
-  let m, n = M.shape x in
-  let a, tau = Owl_lapacke.geqrf x in
-  let r = M.resize ~head:true n n (M.triu a) in
-  let q = _get_q (M.kind x) a tau in
-  q, r
-
-
-let qrfact x = None
-
-
 let qr_sqsolve a b =
   let open Gsl.Vectmat in
   let c = MD.clone a in
