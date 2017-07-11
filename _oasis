@@ -55,6 +55,7 @@ Library owl
                     Owl_fft,
                     Owl_cblas,
                     Owl_lapacke,
+                    Owl_lapacke_generated,
                     Owl_linalg,
                     Owl_cluster,
                     Owl_optimise,
@@ -79,7 +80,6 @@ Library owl
                     ext/Owl_ext,
                     Owl_parallel
   InternalModules:  Owl_cblas_generated,
-                    Owl_lapacke_generated,
                     Owl_conv,
                     Owl_dense_common,
                     Owl_dense_ndarray_a,
