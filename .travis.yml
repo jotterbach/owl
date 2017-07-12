@@ -18,7 +18,8 @@ matrix:
 before_install:
   - docker pull ryanrhymes/owl:latest
   - docker run ryanrhymes/owl /bin/sh -c "make cleanall; apt-get -y install wget; wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh; bash -ex .travis-opam.sh"
-
+  - docker ps -a
+  
 install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
       sudo apt-get update;
