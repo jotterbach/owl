@@ -2,6 +2,8 @@ language: c
 
 sudo: required
 
+services: docker
+
 env: OCAML_VERSION=4.04 EXTRA_DEPS="oasis alcotest" INSTALL=false
 
 matrix:
@@ -12,14 +14,9 @@ matrix:
       osx_image: xcode8.2
     - os: linux
       dist: trusty
-      addons:
-        apt:
-          packages:
-            - gcc
-            - gfortran
-            - cmake
-            - libopenblas-dev
-            - liblapacke-dev
+  before_install:
+    - docker pull ryanrhymes/owl:latest
+    - docker run -d ryanrhymes/owl /bin/sh -c "make cleanall;"
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
